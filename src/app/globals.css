@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f3efe6;
+  --panel: rgba(255, 252, 247, 0.72);
+  --panel-strong: #fffdf8;
+  --ink: #102826;
+  --ink-soft: #3d524f;
+  --muted: #6f817e;
+  --line: rgba(16, 40, 38, 0.12);
+  --line-strong: rgba(16, 40, 38, 0.2);
+  --chip: rgba(16, 40, 38, 0.06);
+  --accent: #0f766e;
+  --accent-ink: #0b5c56;
+  --accent-bright: #5eead4;
+  --accent-soft: #d9f5f0;
+  --ok: #2f7d4a;
+  --ok-ink: #1f5a34;
+  --ok-soft: #e3f4e8;
+  --warn: #b45309;
+  --warn-ink: #92400e;
+  --background: var(--paper);
+  --foreground: var(--ink);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+body {
+  background:
+    linear-gradient(165deg, #e8f3ef 0%, #f3efe6 38%, #efe6d8 72%, #e7f0ec 100%);
+  color: var(--foreground);
+  font-family: var(--font-body), system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+.hero-glow {
+  background: radial-gradient(circle, rgba(15, 118, 110, 0.28) 0%, transparent 68%);
+  animation: drift 14s ease-in-out infinite alternate;
+}
+
+.hero-glow-2 {
+  background: radial-gradient(circle, rgba(180, 120, 60, 0.18) 0%, transparent 70%);
+  animation: drift 18s ease-in-out infinite alternate-reverse;
+}
+
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(40px, 24px, 0) scale(1.08);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-rise {
+  animation: rise 0.7s ease-out both;
+}
+
+.animate-rise-delay {
+  animation: rise 0.85s ease-out 0.12s both;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: rgba(15, 118, 110, 0.22);
+}
